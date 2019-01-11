@@ -59,5 +59,7 @@ btnClear.onclick = () => {
 btnBackspace.onclick = () => {
   let lengthOfDisplayVal = displayVal.length;
   displayVal = displayVal.slice(0,lengthOfDisplayVal-1);
+  if(displayVal === '')
+      displayVal ='0';
   displayValElement.innerText = displayVal;
 };
