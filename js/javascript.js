@@ -37,7 +37,46 @@ var updateDisplayVal = (clickObj) =>{
 };
 
 var performOperation = (clickObj) => {
-    var btnText = clickObj.target.innerText;
+    var operator = clickObj.target.innerText;
+
+    switch(operator){
+        case '+':
+            pendingVal =displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('+');
+            break;
+
+        case '-':
+            pendingVal =displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('-');
+            break;
+
+        case '*':
+            pendingVal =displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('*');
+            break;
+        case '÷':
+            pendingVal =displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('/');
+            break;
+        case '=':
+           evalStringArray.push(displayVal);
+           var evaluation = eval(evalStringArray.join(' '));
+           displayVal = evaluation + '';
+           displayValElement.innerText = displayVal;
+           evalStringArray = [];
+    }
 
 };
 
@@ -45,9 +84,9 @@ for (let i = 0; i < btnNumber.length; i++){
     btnNumber[i].addEventListener('click', updateDisplayVal, false);
 }
 
-// for (let i = 0; i < btnOperator.length; i++){
-//     btnOperator[i].addEventListener('click',performOperation, false);
-// }
+for (let i = 0; i < btnOperator.length; i++){
+    btnOperator[i].addEventListener('click',performOperation, false);
+}
 
 btnClear.onclick = () => {
     displayVal = '0';
@@ -62,4 +101,10 @@ btnBackspace.onclick = () => {
   if(displayVal === '')
       displayVal ='0';
   displayValElement.innerText = displayVal;
+};
+
+btnDecimal.onclick = () => {
+    if(!displayVal.includes('.'))
+        displayVal += '.';
+        displayValElement.innerText = displayVal;
 };

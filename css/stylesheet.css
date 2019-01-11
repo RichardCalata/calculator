@@ -2,6 +2,15 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
 }
 
 .calc-btn {
@@ -33,11 +42,12 @@ body {
 
 #calc-zero {
     width: 52.66666667px;
+    border-radius: 0 0 0 7px;
 }
 
 #calc-clear {
     width: 52.66666667px;
-    border-radius: 0 0 0 7px;
+    border-radius: 0 0 0 0;
 }
 
 #calc-display-val {
