@@ -16,3 +16,48 @@ var btnMinus = document.getElementById("calc-minus");
 var btnMultiply = document.getElementById("calc-multiply");
 var btnDivide = document.getElementById("calc-divide");
 var btnEquals = document.getElementById("calc-equals");
+
+var btnBackspace = document.getElementById("calc-backspace");
+var displayValElement = document.getElementById("calc-display-val");
+var btnClear = document.getElementById("calc-clear");
+
+var btnNumber = document.getElementsByClassName("calc-btn-num");
+var btnOperator = document.getElementsByClassName("calc-btn-operator");
+
+var displayVal = '0';
+var pendingVal;
+var evalStringArray = [];
+
+var updateDisplayVal = (clickObj) =>{
+    var btnText = clickObj.target.innerText;
+    if(displayVal === '0')
+        displayVal = '';
+    displayVal += btnText;
+    displayValElement.innerText = displayVal;
+};
+
+var performOperation = (clickObj) => {
+    var btnText = clickObj.target.innerText;
+
+};
+
+for (let i = 0; i < btnNumber.length; i++){
+    btnNumber[i].addEventListener('click', updateDisplayVal, false);
+}
+
+// for (let i = 0; i < btnOperator.length; i++){
+//     btnOperator[i].addEventListener('click',performOperation, false);
+// }
+
+btnClear.onclick = () => {
+    displayVal = '0';
+    pendingVal = undefined;
+    evalStringArray = [];
+    displayValElement.innerText = displayVal;
+};
+
+btnBackspace.onclick = () => {
+  let lengthOfDisplayVal = displayVal.length;
+  displayVal = displayVal.slice(0,lengthOfDisplayVal-1);
+  displayValElement.innerText = displayVal;
+};
